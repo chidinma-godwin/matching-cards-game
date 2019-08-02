@@ -22,25 +22,40 @@ body{
     position: absolute;
     width: 686px;
     height: 88%;
-    background: linear-gradient(160deg, rgb(114, 102, 221) 0%,rgb(165, 31, 165) 100%);
+    background: linear-gradient(160deg, rgb(114, 102, 221),rgb(165, 31, 165));
     border-radius: 10px;
     left: 15%;
-    top: 10%;
+    top: 10%; 
     box-shadow: 15px 15px 20px rgba(51, 45, 45, 0.7);
     margin: 0;
-    padding: 20px;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-top: 0; 
+    padding: 0 0 0 20px;
+    list-style-type: none; 
 }
 .card{
     width: 133px;
     height: 21%;
-    background: rgb(114, 102, 221);
+    background: black;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(51, 45, 45, 0.7);
     font-size: 0;
     float: left;
     margin: 10px;
     margin-right: 22px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.open{
+    cursor: default;
+    color: white;
+    font-size: 50px;
+    padding: 0.6em;
+    background: rgb(114, 102, 221);
+}
+
+.match{
+    background: rgb(165, 31, 165);
+    color: white;
+    font-size: 50px;
+    padding: 0.6em;
 }
