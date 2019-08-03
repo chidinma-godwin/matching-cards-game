@@ -1,6 +1,8 @@
 //Declare global variables
 let toggledCards = [];
 const deck = document.querySelector(".deck"); //Create an array containing all cards
+let time = 0;
+let clockOff = true;
 
 //function to shuffle cards
 function shuffleCards(array){
@@ -50,6 +52,28 @@ function checkMatch(){
             toggledCards = []}, 800)
        }
 }
+
+//function to add time to the game
+function startClock(){
+    setInterval(function(){
+        time++;
+        displayTime();
+    },1000)
+}
+
+//function to set time in the right format
+function displayTime(){
+    let clock = document.querySelector(".time");
+    let min = Math.floor(time/60);
+    let sec = time % 60;
+    if(sec<10){
+        calcTime = `${min}:0${sec}`;
+    }
+    else{
+        calcTime = `${min}:${sec}`;
+    }
+    clock.innerHTML = calcTime;
+}
  
 //functon to use for the one-time event listener
 function onceEvent(){
@@ -70,6 +94,10 @@ deck.addEventListener("click",onceEvent)
 deck.addEventListener("click",function(evt){
     let clickTarget = evt.target;
     if (clickTarget.classList.contains("card") && toggledCards.length<2){
+        if(clockOff===true){
+            startClock();
+            clockOff=false;
+        }
         toggleCard(clickTarget);
         //console.log(clickTarget);
         addToggledCard(clickTarget);
