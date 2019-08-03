@@ -3,7 +3,7 @@ let toggledCards = [];
 const deck = document.querySelector(".deck"); //Create an array containing all cards
 
 //function to open or close the cards
-function toggleCards(card){
+function toggleCard(card){
     card.classList.toggle("open");
 }
 
@@ -27,12 +27,24 @@ function checkMatch(){
             toggledCards = []}, 800)
        }
 }
+ 
+//functon to use for the one-time event listener
+function onceEvent(){
+    deck.removeEventListener("click",onceEvent)
+    let firstCard = deck.querySelector(".first");
+    firstCard.className = "card";
+    toggleCard(firstCard);
+    addToggledCard(firstCard);
+}
+
+// Add one-time event listener to add the unmatched card at the beginning to array of toggled cards
+deck.addEventListener("click",onceEvent)
 
 // Add event listener to perform an action when clicking on cards
 deck.addEventListener("click",function(evt){
     let clickTarget = evt.target;
     if (clickTarget.classList.contains("card") && toggledCards.length<2){
-        toggleCards(clickTarget);
+        toggleCard(clickTarget);
         //console.log(clickTarget);
         addToggledCard(clickTarget);
     }
