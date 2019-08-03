@@ -3,6 +3,7 @@ let toggledCards = [];
 const deck = document.querySelector(".deck"); //Create an array containing all cards
 let time = 0;
 let clockOff = true;
+let moves = 0;
 
 //function to shuffle cards
 function shuffleCards(array){
@@ -35,7 +36,6 @@ function toggleCard(card){
 //function to add opened card to array containing toggled cards
 function addToggledCard(card){
     toggledCards.push(card);
-    console.log(toggledCards);
 }
 
 //function to check if the cards match
@@ -51,6 +51,15 @@ function checkMatch(){
             toggleCard(toggledCards[1]);
             toggledCards = []}, 800)
        }
+}
+ 
+//functon to use for the one-time event listener
+function onceEvent(){
+    deck.removeEventListener("click",onceEvent)
+    let firstCard = deck.querySelector(".first");
+    firstCard.className = "card";
+    toggleCard(firstCard);
+    addToggledCard(firstCard);
 }
 
 //function to add time to the game
@@ -74,14 +83,33 @@ function displayTime(){
     }
     clock.innerHTML = calcTime;
 }
- 
-//functon to use for the one-time event listener
-function onceEvent(){
-    deck.removeEventListener("click",onceEvent)
-    let firstCard = deck.querySelector(".first");
-    firstCard.className = "card";
-    toggleCard(firstCard);
-    addToggledCard(firstCard);
+
+//function to count the number of moves made
+function countMoves(){
+    let numMove = document.querySelector(".num-moves");
+    if(moves<=1){
+        numMove.innerHTML = `${moves} move`;
+    } 
+    if(moves>1){
+        numMove.innerHTML = `${moves} moves`;
+    }
+}
+
+//function to change the number of stars
+function changeStar(){
+    if(moves===8 || moves===16){
+        removeStar();
+    }
+}
+
+function removeStar(){
+    let allStars = document.querySelectorAll(".ch-star");
+    for(let star of allStars){
+        if(star.style.display!=="none"){
+        star.style.display = "none";
+        break;
+        }
+    }
 }
 
 //Shuffle the deck at the beginning of the game
@@ -103,6 +131,9 @@ deck.addEventListener("click",function(evt){
         addToggledCard(clickTarget);
     }
     if (toggledCards.length===2){
-        checkMatch()
+        checkMatch();
+        moves++;
+        countMoves();
+        changeStar();
     }
 })
