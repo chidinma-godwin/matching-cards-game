@@ -58,4 +58,21 @@ body{
     color: white;
     font-size: 50px;
     padding: 0.6em;
+    cursor: default;
+}
+
+.score-panel{
+    position: absolute;
+    left: 12em;
+    top: 1.5em;
+    height: 30px;
+    font-size: 22px;
+}
+
+.score-space{
+    padding: 1em;
+}
+
+.num-moves{
+    padding: 0.2em;
 }

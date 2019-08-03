@@ -12,8 +12,18 @@
 
     <body>
         <div class="container">
+            <div class="score-panel"> <!-- Container for score panel-->
+                <span class="score-space stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span>
+                <span class="num-moves">3</span>moves
+                <span class="score-space time">0:00</span>
+                <i class="fa fa-refresh"></i>
+            </div>
             <div class="deck-container">
-                <ul class="deck">
+                <ul class="deck"> <!-- Create the container for the cards-->
                     <li class="card open"><i class="fa fa-cube"></i></li>
                     <li class="card"><i class="fa fa-circle"></i></li>
                     <li class="card match"><i class="fa fa-heart"></i></li>
@@ -33,5 +43,6 @@
                 </ul>
             </div>
         </div>
+        <script src="app.js"></script>
     </body>
 </html>
