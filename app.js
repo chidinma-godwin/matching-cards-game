@@ -2,8 +2,31 @@
 let toggledCards = [];
 const deck = document.querySelector(".deck"); //Create an array containing all cards
 
+//function to shuffle cards
+function shuffleCards(array){
+    let currentIndex=array.length, temporaryValue, randomIndex;
+    while(currentIndex>0){
+        randomIndex=Math.floor(Math.random()*currentIndex);
+        currentIndex--;
+        temporaryValue=array[currentIndex];
+        array[currentIndex]=array[randomIndex];
+        array[randomIndex]=temporaryValue;
+    }
+    return array;
+}
+
+//function to turn the deck to an array of cards and shuffle them
+function shuffleDeck(){
+    let toShuffle=Array.from(document.querySelectorAll(".card"));
+    let shuffledCards=shuffleCards(toShuffle);
+    for(let card of shuffledCards){
+        deck.appendChild(card);
+    }
+}
+
 //function to open or close the cards
 function toggleCard(card){
+    card.classList.toggle("show");
     card.classList.toggle("open");
 }
 
@@ -22,8 +45,8 @@ function checkMatch(){
            toggledCards = [];
        } else{
         setTimeout(function(){
-            toggledCards[0].classList.toggle("open");
-            toggledCards[1].classList.toggle("open");
+            toggleCard(toggledCards[0]);
+            toggleCard(toggledCards[1]);
             toggledCards = []}, 800)
        }
 }
@@ -36,6 +59,9 @@ function onceEvent(){
     toggleCard(firstCard);
     addToggledCard(firstCard);
 }
+
+//Shuffle the deck at the beginning of the game
+shuffleDeck();
 
 // Add one-time event listener to add the unmatched card at the beginning to array of toggled cards
 deck.addEventListener("click",onceEvent)

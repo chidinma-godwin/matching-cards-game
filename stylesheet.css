@@ -45,11 +45,14 @@ body{
     text-align: center;
 }
 
+.show{
+    font-size: 50px;
+    color: white;
+    padding: 0.6em;
+}
+
 .open{
     cursor: default;
-    color: white;
-    font-size: 50px;
-    padding: 0.6em;
     background: rgb(114, 102, 221);
 }
 
