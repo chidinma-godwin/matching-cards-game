@@ -135,13 +135,16 @@ function togglePause(){
 
 //function to play game
 function playGame(){
-    const play = document.querySelector(".play");
+    const pause = document.querySelector(".fa-pause");
+    pause.style.display = "inline";
+    const play = document.querySelector(".pause-background");
     startClock();
-    play.classList.toggle("pause-background");
+    play.classList.toggle("hide");
 }
 
-document.querySelector(".fa-pause").addEventListener("click",togglePause)
-document.querySelector(".play").addEventListener("click",playGame)
+//Add event listener to pause and play the game
+document.querySelector(".fa-pause").addEventListener("click",togglePause);
+document.querySelector(".play").addEventListener("click",playGame);
 
 // Add event listener to perform an action when clicking on cards
 deck.addEventListener("click",function(evt){
