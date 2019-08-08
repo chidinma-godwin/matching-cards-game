@@ -4,6 +4,7 @@ const deck = document.querySelector(".deck"); //Create an array containing all c
 let time = 0;
 let clockOff = true;
 let moves = 0;
+let clockId;
 
 //function to shuffle cards
 function shuffleCards(array){
@@ -64,9 +65,9 @@ function onceEvent(){
 
 //function to add time to the game
 function startClock(){
-    setInterval(function(){
-        time++;
-        displayTime();
+    clockId = setInterval(function(){
+    time++;
+    displayTime();
     },1000)
 }
 
@@ -112,11 +113,35 @@ function removeStar(){
     }
 }
 
+//function to stop clock
+function stopClock(){
+    clearInterval(clockId);
+}
+
 //Shuffle the deck at the beginning of the game
 shuffleDeck();
 
 // Add one-time event listener to add the unmatched card at the beginning to array of toggled cards
 deck.addEventListener("click",onceEvent)
+
+//function to toggle pause background
+function togglePause(){
+    stopClock();
+    const pause = document.querySelector(".fa-pause");
+    pause.style.display = "none";
+    const pauseBackground = document.querySelector(".pause-background");
+    pauseBackground.classList.toggle("hide");
+}
+
+//function to play game
+function playGame(){
+    const play = document.querySelector(".play");
+    startClock();
+    play.classList.toggle("pause-background");
+}
+
+document.querySelector(".fa-pause").addEventListener("click",togglePause)
+document.querySelector(".play").addEventListener("click",playGame)
 
 // Add event listener to perform an action when clicking on cards
 deck.addEventListener("click",function(evt){

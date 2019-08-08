@@ -79,3 +79,31 @@ body{
 .num-moves{
     padding: 0.2em;
 }
+
+.pause-background{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: rgba(37, 37, 37,0.5);
+}
+
+.pause-body{
+    background: ghostwhite;
+    position: absolute;
+    width: 40%;
+    height:30%;
+    top: 15.5em;
+    left: 18.5em;
+}
+
+.pause-text{
+    text-align: center;
+}
+
+.play{
+    padding-left: 1.8em;
+    font-size: 6em;
+}
+.hide{
+    display: none;
+}
