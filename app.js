@@ -5,6 +5,7 @@ let time = 0;
 let clockOff = true;
 let moves = 0;
 let clockId;
+let numStar = 3;
 
 //function to shuffle cards
 function shuffleCards(array){
@@ -52,6 +53,7 @@ function checkMatch(){
             toggleCard(toggledCards[1]);
             toggledCards = []}, 800)
        }
+    moves++
 }
  
 //functon to use for the one-time event listener
@@ -108,6 +110,7 @@ function removeStar(){
     for(let star of allStars){
         if(star.style.display!=="none"){
         star.style.display = "none";
+        numStar--;
         break;
         }
     }
@@ -142,7 +145,26 @@ function playGame(){
     play.classList.toggle("hide");
 }
 
-//Add event listener to pause and play the game
+//function to get the time spent, number of moves and star
+function modalStat(){
+    let modalTime = document.querySelector(".time").innerHTML;
+    min = Math.floor(time/60);
+    sec = time%60;
+    if(sec<10){
+        time = `${min}:0${sec}`
+    }
+    if(sec>=10){
+        time = `${min}:${sec}`
+    }
+    modalTime = time;
+    document.querySelector(".totalTime").innerHTML = `Time: ${modalTime}`;
+
+    document.querySelector(".totalMoves").innerText = `Moves: ${moves}`;
+
+    document.querySelector(".totalStar").innerText = `Star: ${numStar}`;
+}
+
+// Add event listener to pause and play the game
 document.querySelector(".fa-pause").addEventListener("click",togglePause);
 document.querySelector(".play").addEventListener("click",playGame);
 

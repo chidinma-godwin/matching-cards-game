@@ -104,6 +104,58 @@ body{
     padding-left: 1.8em;
     font-size: 6em;
 }
+
 .hide{
     display: none;
+}
+
+.hide-background{
+    background: rgba(37, 37, 37,0.5);
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+}
+
+.modal-body{
+    background: ghostwhite;
+    position: absolute;
+    width: 45%;
+    height: 40%;
+    top: 15.5em;
+    left: 17em;
+}
+.modal-heading{
+    border-bottom: solid 0.5px rgb(54, 53, 53);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 21.44px;
+}
+
+.fa-close{
+    font-size: 30px;
+    padding: 21.44px;
+}
+
+.modal-content{
+    padding: 2em;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: solid 0.5px rgb(54,53,53);
+}
+
+.totalTime, .totalMoves, .totalStar{
+    padding: 0.6em;
+    font-size: 22px;
+}
+
+.modal-control{
+    padding: 1em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-button{
+    width: 70px;
+    height: 35px;
+    font-size: 18px;
 }
