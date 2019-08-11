@@ -6,6 +6,7 @@ let clockOff = true;
 let moves = 0;
 let clockId;
 let numStar = 3;
+let matched = 1;
 
 //function to shuffle cards
 function shuffleCards(array){
@@ -47,6 +48,7 @@ function checkMatch(){
            toggledCards[0].classList.toggle("match");
            toggledCards[1].classList.toggle("match");
            toggledCards = [];
+           matched++;
        } else{
         setTimeout(function(){
             toggleCard(toggledCards[0]);
@@ -121,12 +123,6 @@ function stopClock(){
     clearInterval(clockId);
 }
 
-//Shuffle the deck at the beginning of the game
-shuffleDeck();
-
-// Add one-time event listener to add the unmatched card at the beginning to array of toggled cards
-deck.addEventListener("click",onceEvent)
-
 //function to toggle pause background
 function togglePause(){
     stopClock();
@@ -147,22 +143,60 @@ function playGame(){
 
 //function to get the time spent, number of moves and star
 function modalStat(){
-    let modalTime = document.querySelector(".time").innerHTML;
     min = Math.floor(time/60);
     sec = time%60;
     if(sec<10){
-        time = `${min}:0${sec}`
+        newTime = `${min}:0${sec}`
     }
     if(sec>=10){
-        time = `${min}:${sec}`
+        newTime = `${min}:${sec}`
     }
-    modalTime = time;
+    let modalTime = newTime;
     document.querySelector(".totalTime").innerHTML = `Time: ${modalTime}`;
 
     document.querySelector(".totalMoves").innerText = `Moves: ${moves}`;
 
     document.querySelector(".totalStar").innerText = `Star: ${numStar}`;
 }
+
+//function to toggle modal background
+function toggleModal(){
+    const modal = document.querySelector(".modal-background");
+    modal.classList.toggle("hide-background");
+}
+
+//function to reset game
+function reset(){
+    // close modal background
+    toggleModal();
+
+    // close all cards
+    const matchedCard = document.querySelectorAll(".match");
+    for(let card of matchedCard){
+        card.className = "card";
+    }
+
+    // reset time, number of moves and matched card
+    matched = 0;
+    moves = 0;
+    time = 0;
+    numStar = 3;
+    clockOff = true ;
+    displayTime();
+    countMoves();
+
+    //display all stars
+    let stars = document.querySelectorAll(".fa-star");
+    for(star of stars){
+        star.style.display = "inline";
+    }
+}
+
+//Shuffle the deck at the beginning of the game
+shuffleDeck();
+
+// Add one-time event listener to add the unmatched card at the beginning to array of toggled cards
+deck.addEventListener("click",onceEvent)
 
 // Add event listener to pause and play the game
 document.querySelector(".fa-pause").addEventListener("click",togglePause);
@@ -186,4 +220,15 @@ deck.addEventListener("click",function(evt){
         countMoves();
         changeStar();
     }
+    if (matched==8){
+        stopClock();
+        modalStat();
+        toggleModal();
+    }
 })
+
+// Add event listener to close the modal background
+document.querySelector(".fa-close").addEventListener("click",toggleModal);
+
+// Add event listener to replay the game
+document.querySelector(".replay").addEventListener("click",reset);

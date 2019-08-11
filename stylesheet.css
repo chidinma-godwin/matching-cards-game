@@ -109,7 +109,7 @@ body{
     display: none;
 }
 
-.hide-background{
+.modal-background{
     background: rgba(37, 37, 37,0.5);
     position: absolute;
     width: 100%;
@@ -148,14 +148,13 @@ body{
     font-size: 22px;
 }
 
-.modal-control{
-    padding: 1em;
-    display: flex;
-    justify-content: space-around;
-}
-
 .modal-button{
     width: 70px;
     height: 35px;
     font-size: 18px;
+    margin: 1em 10em;
+}
+
+.hide-background{
+    display: none;
 }
