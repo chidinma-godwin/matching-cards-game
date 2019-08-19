@@ -3,7 +3,7 @@ let toggledCards = [];
 const deck = document.querySelector(".deck"); //Create an array containing all cards
 let time = 0;
 let clockOff = true;
-let moves = 0;
+let moves = 1;
 let clockId;
 let numStar = 3;
 let matched = 1;
@@ -55,7 +55,6 @@ function checkMatch(){
             toggleCard(toggledCards[1]);
             toggledCards = []}, 800)
        }
-    moves++
 }
  
 //functon to use for the one-time event listener
@@ -102,7 +101,7 @@ function countMoves(){
 
 //function to change the number of stars
 function changeStar(){
-    if(moves===8 || moves===16){
+    if(moves===15 || moves===30){
         removeStar();
     }
 }
@@ -169,11 +168,20 @@ function toggleModal(){
 function reset(){
     // close modal background
     toggleModal();
+    
+    // shuffle cards
+    shuffleDeck();
 
-    // close all cards
+    // close all matched cards
     const matchedCard = document.querySelectorAll(".match");
-    for(let card of matchedCard){
-        card.className = "card";
+    for(let match of matchedCard){
+        match.className = "card";
+    }
+
+    // close all opened cards
+    const openedCard = document.querySelectorAll(".card");
+    for(let open of openedCard){
+        open.className = "card";
     }
 
     // reset time, number of moves and matched card
@@ -228,7 +236,7 @@ deck.addEventListener("click",function(evt){
 })
 
 // Add event listener to close the modal background
-document.querySelector(".fa-close").addEventListener("click",toggleModal);
+document.querySelector(".fa-window-close").addEventListener("click",toggleModal);
 
 // Add event listener to replay the game
 document.querySelector(".replay").addEventListener("click",reset);

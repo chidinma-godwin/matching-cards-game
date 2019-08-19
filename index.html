@@ -2,6 +2,7 @@
 <html lang="en"> <!-- Container for data about the HTML document-->
     <head>
         <meta charset="utf-8"> <!-- Define the character set used-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Udacity memory game project">
         <meta name="keywords" content="HTML, CSS, Javascript, Card game, Udacity project"> <!-- Define keywords for search engines-->
         <meta name="author" content="Godwin Chidinma Esther">
@@ -18,14 +19,11 @@
                     <i class="ch-star fa fa-star"></i>
                     <i class="ch-star fa fa-star"></i>
                 </span>
-                <span class="num-moves">3 moves</span>
+                <span class="num-moves">1 move</span>
                 <span class="score-space time">0:00</span>
                 <span class="fa fa-pause"></span>
-                <span class="score-space"></span>
-                <span class="fa fa-refresh"></span>
             </div>
-            <div class="deck-container">
-                <ul class="deck"> <!-- Create the container for the cards-->
+            <ul class="deck"> <!-- Create the container for the cards-->
                     <li class="card first open show"><i class="fa fa-cube"></i></li>
                     <li class="card"><i class="fa fa-circle"></i></li>
                     <li class="card match"><i class="fa fa-heart"></i></li>
@@ -42,8 +40,7 @@
                     <li class="card"><i class="fa fa-tree"></i></li>
                     <li class="card"><i class="fa fa-diamond"></i></li>
                     <li class="card"><i class="fa fa-star"></i></li>
-                </ul>
-            </div>
+            </ul>
 
             <div class="pause-background hide"> <!--create background that shows when game is paused-->
                 <div class="pause-body">
@@ -55,15 +52,17 @@
             <div class="modal-background hide-background"> <!-- create background that shows at the end of the game-->
                 <div class="modal-body">
                     <div class="modal-heading">
-                        <h1>Stats</h1>
-                        <span class="fa fa-close"></span>
+                         <div class="close"><span class="fa fa-window-close"></span></div>
+                        <h1 class="heading">Congratulations!</h1>
                     </div>
                     <div class="modal-content">
-                        <div class="totalTime"></div>
-                        <div class="totalMoves"></div>
-                        <div class="totalStar"></div>
+                        <div class="totalTime">Time:</div>
+                        <div class="totalMoves">Moves:</div>
+                        <div class="totalStar">Star:</div>
                     </div>
-                    <button class="modal-button replay">Restart</button>
+                    <div class="replay">
+                    <button class="modal-button">Restart</button>
+                    </div>
                 </div>
             </div>
 

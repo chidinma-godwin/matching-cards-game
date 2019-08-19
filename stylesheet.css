@@ -18,37 +18,57 @@ html, body, .container{
 body{
     background: white url("img/geometry2.png");
 }
+
+.container{
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .deck{
-    position: absolute;
-    width: 686px;
+    position: relative;
+    min-width: 300px;
+    width: 50%;
     height: 88%;
     background: linear-gradient(160deg, rgb(114, 102, 221),rgb(165, 31, 165));
     border-radius: 10px;
-    left: 15%;
     top: 10%; 
     box-shadow: 15px 15px 20px rgba(51, 45, 45, 0.7);
-    margin: 0;
-    padding: 0 0 0 20px;
+    margin: 0 auto;
+    padding: 0.2em;
+   /* padding: 0 0 0 20px; */
     list-style-type: none; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .card{
-    width: 133px;
-    height: 21%;
+    /* width: 133px; */
+    min-width: 20%;
+    height: 23%;
     background: black;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(51, 45, 45, 0.7);
     font-size: 0;
-    float: left;
-    margin: 10px;
-    margin-right: 22px;
+    /* float: left; */
+    margin: 4px;
+    margin-right: 0.4rem;
+    margin-left: 0.5rem;
+   /* margin-right: 22px; */
     cursor: pointer;
     text-align: center;
+    /* padding-top: 0.5; */
 }
 
 .show{
-    font-size: 50px;
+    font-size: 13vmin;
     color: white;
-    padding: 0.6em;
+}
+
+.card i{
+    position: relative;
+    top: 1rem;
 }
 
 .open{
@@ -59,21 +79,23 @@ body{
 .match{
     background: rgb(165, 31, 165);
     color: white;
-    font-size: 50px;
-    padding: 0.6em;
+    /* font-size: 50px; */
+    font-size: 13vmin;
     cursor: default;
 }
 
 .score-panel{
     position: absolute;
-    left: 12em;
-    top: 1.5em;
+    /* left: 5em; 
+    top: 1.5em; */
     height: 30px;
-    font-size: 22px;
+    margin:  1.5em auto;
+    /* font-size: 22px; */
+    font-size: 1em;
 }
 
 .score-space{
-    padding: 1em;
+    padding: 0.4em;
 }
 
 .num-moves{
@@ -89,21 +111,23 @@ body{
 
 .pause-body{
     background: ghostwhite;
-    position: absolute;
-    width: 40%;
-    height:30%;
-    top: 15.5em;
-    left: 18.5em;
+    position: relative;
+    top: 11em;
+    width: 25%;
+   /* height:30%; */
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
 .pause-text{
     text-align: center;
+    font-size: 1.2em;
 }
 
 .play{
-    font-size: 4em;
+    font-size: 3em;
+    padding-bottom: 0.2em;
     display: flex;
     justify-content: center;
 }
@@ -117,45 +141,58 @@ body{
     position: absolute;
     width: 100%;
     min-height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .modal-body{
     background: ghostwhite;
-    position: absolute;
-    width: 45%;
+    position: relative;
+    top: 9em;
+    min-width: 186px;
+    width: 40%;
     height: 40%;
-    top: 15.5em;
-    left: 17em;
+    margin: 0 auto;
 }
 .modal-heading{
     border-bottom: solid 0.5px rgb(54, 53, 53);
     display: flex;
-    justify-content: space-between;
-    padding-left: 21.44px;
+    /* justify-content: space-between; */
+    /* padding-left: 21.44px; */
+    font-size: 0.6em;
+    text-align: center;
 }
 
-.fa-close{
-    font-size: 30px;
-    padding: 21.44px;
+.heading{
+    margin: 0 auto;
+}
+
+.fa-window-close{
+    font-size: 3em;
+    color: rgb(148, 27, 27);
 }
 
 .modal-content{
-    padding: 2em;
-    padding-top: 0;
-    padding-bottom: 0;
     border-bottom: solid 0.5px rgb(54,53,53);
 }
 
 .totalTime, .totalMoves, .totalStar{
     padding: 0.6em;
-    font-size: 22px;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .modal-button{
     width: 70px;
     height: 35px;
-    font-size: 18px;
-    margin: 1em 10em;
+    font-size: 1em;
+}
+
+.replay{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .hide-background{
